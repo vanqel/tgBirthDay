@@ -1,10 +1,11 @@
 from aiogram import Bot
 from aiogram import types
 from aiogram import Dispatcher
-
 from service.birthsday_reg.router import birthday
-
 from config.conifg import BOT_TOKEN
+
+from server.Fastapi import app
+import uvicorn
 
 import asyncio
 import logging
