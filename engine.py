@@ -4,8 +4,6 @@ from aiogram import Dispatcher
 from service.birthsday_reg.router import birthday
 from config.conifg import BOT_TOKEN
 
-from server.Fastapi import app
-import uvicorn
 
 import asyncio
 import logging
@@ -20,5 +18,5 @@ async def main():
     await types.Message.answer("hahahah")
 
 
-if __name__ == "__main__":
+def run():
     asyncio.run(main())
