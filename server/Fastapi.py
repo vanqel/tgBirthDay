@@ -2,7 +2,6 @@ import uvicorn
 from fastapi import FastAPI
 import asyncio
 
-import engine
 
 app = FastAPI()
 
