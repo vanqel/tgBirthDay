@@ -18,5 +18,4 @@ async def main():
     await types.Message.answer("hahahah")
 
 
-def run():
-    asyncio.run(main())
+asyncio.run(main())
