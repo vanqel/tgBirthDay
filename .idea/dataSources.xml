@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="telegrambot_birthday_db@ep-falling-cell-a2reg41u.eu-central-1.aws.neon.tech" uuid="69be962c-c1f2-4396-afa2-a43d3f5a4136">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://ep-falling-cell-a2reg41u.eu-central-1.aws.neon.tech/telegrambot_birthday_db?sslmode=require</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+  </component>
+</project>
