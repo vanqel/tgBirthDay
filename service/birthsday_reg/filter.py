@@ -1,7 +1,7 @@
 from aiogram import Bot
 from aiogram.filters import BaseFilter
 from aiogram.types import Message
-from .service import service
+from .utils import service
 
 
 class RegistrationFilter(BaseFilter):
