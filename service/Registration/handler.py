@@ -7,7 +7,7 @@ from .stepform import StepsForm
 from .utils import service
 from .filter import RegistrationFilter, IsRegister
 from service.utils.filter import IsTrueDialog
-
+from ..utils.scheduler import sendDayInChat
 birthday = Router(name="birthday_register")
 
 
@@ -63,12 +63,13 @@ async def birthday_get_date(msg: Message, state: FSMContext):
 
 
 @birthday.callback_query(StepsForm.GET_YESNO)
-async def add_user_end(call: CallbackQuery, state: FSMContext):
+async def add_user_end(call: CallbackQuery, state: FSMContext,bot:Bot):
     if call.data == '1':
         context = await state.get_data()
         await service.addUser(user_id=call.from_user.id, login=call.from_user.username, date=context['date'],
                               name=context['name'])
         await state.clear()
+        await sendDayInChat(bot,target_user=call.from_user.id,name=context['name'])
         await call.message.answer("Я внёс твоё день рождение в свой календарик :)")
     else:
         await call.message.answer("Давайте начнём заново.\nВведите своё имя:")
