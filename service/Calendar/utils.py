@@ -1,16 +1,16 @@
-import datetime
-
 from aiogram import Bot
-from aiogram.types import Chat, ChatPhoto
-from database.database import manager
+
+from database.database import database_manager
 
 
 class CalendarManager:
     def __init__(self):
         pass
 
-    def getseqdate(self, chat_id):
-        data = manager.getAllDate(chat_id)
+    async def getseqdate(self, chat_id: int | str, bot: Bot):
+        name_chat = await bot.get_chat(chat_id)
+        name_chat = name_chat.title
+        data = database_manager.get_all_users_date(chat_id)
         users = {
             '❄️ Январь': {},
             '❄️ Февраль': {},
@@ -52,12 +52,10 @@ class CalendarManager:
                     users['🍁 Ноябрь'][month[0]] = month[1]
                 case 12:
                     users['❄️ Декабрь'][month[0]] = month[1]
-        return self._genericCalendar(users)
+        return self.genericCalendar(users, name_chat)
 
-    def _genericCalendar(self, users):
-        #   print(users)
-        line = '<b> Наш календарик </b>\n\n'
-        #    print(users.items())
+    def genericCalendar(self, users, name_chat):
+        line = f'<b> Наш календарик | {name_chat}</b>\n\n'
         for date in users.items():
             if date[1] != {}:
                 print(date[1])
@@ -68,7 +66,7 @@ class CalendarManager:
         return line
 
     def getChatList(self, user_id):
-        return manager.getUserInChat(user_id)
+        return database_manager.get_user_in_chat(user_id)
 
 
 service = CalendarManager()

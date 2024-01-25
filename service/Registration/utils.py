@@ -1,7 +1,13 @@
 import datetime
 import re
 
-from database.database import manager
+from aiogram import Bot
+from pyrogram.enums import ParseMode
+
+from database.database import database_manager
+from ..utils.pyro import app
+from ..utils.scheduler import sheduler
+from ..utils.utils import logger
 
 
 class birthday_reg_service:
@@ -19,14 +25,30 @@ class birthday_reg_service:
         else:
             return [False, None]
 
-    async def isRegistration(self, user_id):
-        return manager.isRegister(user_id=user_id)
+    async def send_new_about(self, user_id, about):
+        try:
+            name = database_manager.get_name(user_id)
+            list_cid = database_manager.get_all_new_link(user_id=user_id)
+            for cid in list_cid:
+                await app.send_message(chat_id=cid,
+                                       text=f"<b>У пользователя - {name}, обновился список желаний\n</b> {about}",
+                                       parse_mode=ParseMode.HTML)
+        except:
+            pass
 
-    async def addUser(self, login, user_id, name, date):
-        return manager.addUser(login=login, user_id=user_id, name=name, date=date)
+    async def isRegistration(self, user_id):
+        return database_manager.is_registered(user_id=user_id)
+
+    async def add_user(self, login, user_id, name, date):
+        return database_manager.add_user(login=login, user_id=user_id, name=name, date=date)
 
     async def deleteUser(self, user_id):
-        return manager.deleteuser(user_id)
+        list_job = sheduler.get_jobs()
+        for i in list_job:
+            if i.name == user_id:
+                sheduler.remove_job(job_id=i.id)
+        logger(f"DELETE: <b> JOB FOR USER_ID - {i.name}</b>")
+        return database_manager.delete_user(user_id)
 
 
 service = birthday_reg_service()

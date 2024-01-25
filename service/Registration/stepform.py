@@ -1,5 +1,6 @@
 from aiogram.fsm.state import StatesGroup, State
 
+
 class StepsForm(StatesGroup):
     GET_YESNO = State()
     GET_NAME = State()
@@ -7,3 +8,5 @@ class StepsForm(StatesGroup):
     REGISTER_YESNO = State()
     START_REG = State()
     DELETE_USER = State()
+    UPDATE_ABOUT = State()
+    UPDATE_ABOUT1 = State()
