@@ -99,7 +99,7 @@ async def helpMessage(msg: Message):
 @dp.message(IsAdmin(),Command(commands='setuniccode'))
 async def setcode(msg:Message):
     a = msg.text
-    a = a.split(".",1)
+    a = a.split(" ",1)
     await msg.answer(a[0]+"___"+a[1])
 async def main():
     logger.setBot(bot)
