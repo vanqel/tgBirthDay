@@ -61,7 +61,11 @@ class CalendarManager:
                 print(date[1])
                 line += f"  <b>{date[0]}:</b> \n"
                 for value in date[1].items():
-                    line += f"      - <i>{value[1]['date'].day} числа </i> - празднует  <a href='https://t.me/{value[1]['login']}'>{value[1]['name']}</a>\n"
+                    if value[1]['login'] is None:
+                        line += f"      - <i>{value[1]['date'].day} числа </i> - празднует  {value[1]['name']}\n"
+                    else:
+                        line += f"      - <i>{value[1]['date'].day} числа </i> - празднует  <a href='https://t.me/{value[1]['login']}'>{value[1]['name']}</a>\n"
+
         line += "\n<blockquote>Список остальных комманд можно узнать /help </blockquote>"
         return line
 

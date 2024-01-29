@@ -115,15 +115,24 @@ class DataBaseManager():
 
     @query
     def get_user_in_chat(self, user_id):
-        search = f"SELECT id_chat FROM chattable WHERE id_user='{user_id}'"
+        search = f"SELECT id_chat"\
+                f" FROM ("\
+                f"    SELECT c.id_chat, COUNT(c.id_chat) AS user_count"\
+                f"    FROM chattable c"\
+                f"    JOIN ("\
+                f"        SELECT id_chat AS user_chats"\
+                f"        FROM chattable"\
+                f"       WHERE id_user = '{user_id}'"\
+                f"        GROUP BY id_chat"\
+                f"    ) u ON c.id_chat = u.user_chats"\
+                f"    GROUP BY c.id_chat"\
+                f") AS chat_counts"\
+                f" WHERE user_count > 1;"
         try:
             chat = self.execute_query(search).fetchall()
-            seq = []
-            for i in chat:
-                if self.get_all_users_in_chat(i[0]) > 1:
-                    seq += [i[0]]
-            return seq
-        except:
+            return [cid[0] for cid in chat]
+        except Exception as ex:
+            print(ex)
             return False
 
     def check_user_in_chat(self, user_id, chat_id):
@@ -155,11 +164,6 @@ class DataBaseManager():
         search = f"SELECT id_chat FROM chats"
         data = self.execute_query(search).fetchall()
         return data
-
-    @query
-    def get_all_users_in_chat(self, chat_id):
-        users = f"SELECT * FROM chattable WHERE id_chat='{chat_id}'"
-        return len(self.execute_query(users).fetchall())
 
     @query
     def get_all_users(self):
@@ -273,6 +277,13 @@ class DataBaseManager():
             logger(f"deleteChatInUserChatLink {ex}")
 
     @query
+    def get_chatid_from_new_link(self, target):
+        try:
+            search = f"SELECT id_new_chat FROM userchatlink WHERE id_user='{target}'"
+            return self.execute_query(search).fetchone()[0]
+        except Exception as ex:
+            logger(f"get_chatid_from_new_link: {ex}")
+    @query
     def get_name(self, user_id):
         search = f"SELECT name FROM userstable WHERE user_id='{user_id}'"
         name = self.execute_query(search).fetchone()
@@ -295,6 +306,15 @@ class DataBaseManager():
             logger(f"get_about, {ex}")
             return None
 
+    @query
+    def clearchat(self, chat_id):
+        try:
+            deleting = f"DELETE FROM chattable WHERE id_chat='{chat_id}'"
+            self.execute_query(deleting)
+            logger(f"deleting - {chat_id} succ")
+        except Exception as ex:
+            logger(f"deleting - {chat_id} error: {ex}")
 
 database_manager = DataBaseManager()
 print(database_manager.get_all_new_link(841244380))
+print(database_manager.get_user_in_chat(3213213))
