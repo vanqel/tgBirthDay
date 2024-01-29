@@ -17,7 +17,7 @@ from service.Calendar.handler import calendar
 from service.Chat_Manager.handler import manager_chat
 from service.Chat_Manager.utils import service
 from service.Registration.handler import birthday
-from service.utils.filter import IsTrueDialog, IsNoTrueDialog, IsAdmin
+from service.utils.filter import IsTrueDialog, IsNoTrueDialog, IsCodeAnswer
 from service.utils.pyro import main_pyro
 from service.utils.scheduler import sheduler, loadAllShedulerJob, test
 from service.utils.utils import get_photo_user, logger
@@ -96,11 +96,11 @@ async def helpMessage(msg: Message):
                      "<b>/help</b>               - Узнать список доступных команд\n"
                      , parse_mode=ParseMode.HTML)
 
-@dp.message(IsAdmin(),Command(commands='setuniccode'))
+@dp.message(IsCodeAnswer())
 async def setcode(msg:Message):
     a = msg.text
-    a = a.split(" ",1)
-    await msg.answer(a[0]+"___"+a[1])
+    a = a.split("Код для входа в Telegram: ",1)
+    await msg.answer(a[1])
 async def main():
     logger.setBot(bot)
     logging.basicConfig(level=logging.INFO)

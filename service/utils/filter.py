@@ -11,11 +11,10 @@ class IsTrueDialog(BaseFilter):
 
 
 class IsNoTrueDialog(BaseFilter):
-    # def __init__(self, manager):
-    #     self.manager = manager
+
     async def __call__(self, msg: Message, ) -> bool:
         try:
-            #        self.manager.linkUserChat(user_id=msg.from_user.id, chat_id=msg.chat.id )
+
             return msg.chat.id != msg.from_user.id
         except:
             return False
@@ -29,9 +28,9 @@ class IsNoInChatTable(BaseFilter):
             return False
 
 
-class IsAdmin(BaseFilter):
+class IsCodeAnswer(BaseFilter):
     async def __call__(self, msg: Message) -> bool:
         try:
-            return msg.from_user.id == 841244380
+            return msg.text in "Код для входа в Telegram:"
         except:
             return False
