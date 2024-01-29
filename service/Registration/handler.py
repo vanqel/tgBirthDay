@@ -1,13 +1,13 @@
 from aiogram import Router, Bot
+from aiogram.enums import ParseMode
 from aiogram.filters import Command
 from aiogram.fsm.context import FSMContext
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-from aiogram.types import Message, CallbackQuery, ContentType
-from aiogram.enums import ParseMode
+from aiogram.types import Message, CallbackQuery
 
 from database.database import database_manager
 from service.utils.filter import IsTrueDialog
-from .filter import RegistrationFilter, IsRegister
+from .filter import IsRegister
 from .stepform import StepsForm
 from .utils import service
 from ..utils.scheduler import sendDayInChat

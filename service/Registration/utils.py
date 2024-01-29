@@ -1,7 +1,6 @@
 import datetime
 import re
 
-from aiogram import Bot
 from pyrogram.enums import ParseMode
 
 from database.database import database_manager

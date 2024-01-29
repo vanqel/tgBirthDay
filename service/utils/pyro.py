@@ -1,10 +1,9 @@
 from aiogram import Bot
 from pyrogram import Client
 from pyrogram.enums import ParseMode
-from pyrogram.types import Message
 
-from database.database import database_manager
 from config import *
+from database.database import database_manager
 from service.utils.utils import get_photo_user_bin, logger
 
 app = Client(name="Конфетка", api_id=API_ID, api_hash=API_HASH, phone_number=API_NUMBER)

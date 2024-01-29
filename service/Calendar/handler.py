@@ -5,9 +5,8 @@ from aiogram.fsm.context import FSMContext
 from aiogram.types import Message, CallbackQuery, InlineKeyboardMarkup, \
     InlineKeyboardButton
 
-from database.database import database_manager
 from service.utils.filter import IsTrueDialog, IsNoTrueDialog
-from .filter import IsCalendar, Query
+from .filter import Query
 from .utils import service
 
 calendar = Router()

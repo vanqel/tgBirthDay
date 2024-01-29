@@ -1,12 +1,9 @@
-BOT_TOKEN = "6189591595:AAG2RV3LaUGCb_OypMFrgC0x8AhSPJ4qrTs"
-URL_DB = "postgresql://vanqel:Q9NVdtS1pmea@ep-falling-cell-a2reg41u.eu-central-1.aws.neon.tech" \
-         "/telegrambot_birthday_db?sslmode=require"
-#API_HASH = "1821a1aab2eeb84d376eb6e10a499f07"
-#API_ID = "21381123"
+BOT_TOKEN = ""
+URL_DB = ""
 
-API_HASH = "ff3c00dc43c6126a3430a34d180276a4"
-API_ID = "28054853"
-API_NUMBER = "+79313531831"
+API_HASH = ""
+API_ID = ""
+API_NUMBER = ""
 
 birthday_wishes = [
     "Тебе попался циркумфлекс ^ ",

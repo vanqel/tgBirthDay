@@ -19,7 +19,7 @@ from service.Chat_Manager.utils import service
 from service.Registration.handler import birthday
 from service.utils.filter import IsTrueDialog, IsNoTrueDialog, IsCodeAnswer
 from service.utils.pyro import main_pyro
-from service.utils.scheduler import sheduler, loadAllShedulerJob, test
+from service.utils.scheduler import sheduler, loadAllShedulerJob
 from service.utils.utils import get_photo_user, logger
 
 bot = Bot(BOT_TOKEN)

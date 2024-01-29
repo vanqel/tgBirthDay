@@ -71,8 +71,6 @@
 # app.run()
 import datetime
 
-from service.utils.scheduler import sheduler
-
 
 def setDateCreate(date: datetime.date):
 

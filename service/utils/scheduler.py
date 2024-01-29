@@ -8,7 +8,7 @@ from apscheduler.schedulers.asyncio import AsyncIOScheduler
 
 from config import birthday_wishes
 from database.database import database_manager
-from .pyro import createGroup, deleteGroup_chat_id, deleteGroup_target
+from .pyro import createGroup, deleteGroup_chat_id
 from .utils import logger, get_photo_user
 
 sheduler = AsyncIOScheduler(timezone='Europe/Moscow', executor="asyncio")
