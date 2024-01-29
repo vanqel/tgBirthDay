@@ -185,22 +185,23 @@ async def sendDayInChat(bot: Bot, target_user):
                          args=[bot, target_user])
 
 
-async def test(bot: Bot):
-    chat_id = -4146508283
-    target_user = 841244380
-    date = database_manager.get_target_birthdays(target=target_user)
-    caption_now = "Сегодня {} празднует день рождение!"
-    sheduler.add_job(sendMessageTarget,
-                     trigger='date',
-                     next_run_time=datetime.datetime.now() + datetime.timedelta(seconds=6),
-                     name=str(target_user) + "." + str(chat_id), args=[bot, chat_id, target_user, caption_now])
-    sheduler.add_job(bot_send_message,
-                     trigger='date',
-                     next_run_time=datetime.datetime.now() + datetime.timedelta(seconds=6),
-                     name=str(target_user) + "." + str(chat_id), args=[bot, chat_id, target_user])
-    sheduler.add_job(send_update_wishes,
-                     trigger='date',
-                     next_run_time=datetime.datetime.now() + datetime.timedelta(seconds=6),
-                     name=str(target_user) + "." + str(chat_id), args=[bot, target_user])
-    sheduler.add_job(deleteGroup_target, trigger='date',
-                     next_run_time=datetime.datetime.now() + datetime.timedelta(seconds=60), args=[target_user])
+#async def test(bot: Bot):
+#    chat_id = -4146508283
+#    target_user = 841244380
+#    date = database_manager.get_target_birthdays(target=target_user)
+#    caption_now = "Сегодня {} празднует день рождение!"
+#    sheduler.add_job(sendMessageTarget,
+#                     trigger='date',
+#                     next_run_time=datetime.datetime.now() + datetime.timedelta(seconds=6),
+#                     name=str(target_user) + "." + str(chat_id), args=[bot, chat_id, target_user, caption_now])
+#    sheduler.add_job(bot_send_message,
+#                     trigger='date',
+#                     next_run_time=datetime.datetime.now() + datetime.timedelta(seconds=6),
+#                     name=str(target_user) + "." + str(chat_id), args=[bot, chat_id, target_user])
+#    sheduler.add_job(send_update_wishes,
+#                     trigger='date',
+#                     next_run_time=datetime.datetime.now() + datetime.timedelta(seconds=6),
+#                     name=str(target_user) + "." + str(chat_id), args=[bot, target_user])
+#    sheduler.add_job(deleteGroup_target, trigger='date',
+#                     next_run_time=datetime.datetime.now() + datetime.timedelta(seconds=60), args=[target_user])
+#

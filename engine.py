@@ -28,12 +28,12 @@ dp = Dispatcher(bot=bot, parse_mode=ParseMode.HTML)
 dp.include_router(birthday)
 dp.include_router(manager_chat)
 dp.include_router(calendar)
-
-
-@dp.message(Command(commands='teresteted'))
-async def test_eng(msg: Message, bot: Bot):
-    await test(bot=bot)
-
+#
+#
+#@dp.message(Command(commands='teresteted'))
+#async def test_eng(msg: Message, bot: Bot):
+#    await test(bot=bot)
+#
 
 @dp.message(Command(commands="gettext"))
 async def rand_birth_text(msg: Message):
