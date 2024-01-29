@@ -98,7 +98,9 @@ async def helpMessage(msg: Message):
 
 @dp.message(IsAdmin(),Command(commands='setuniccode'))
 async def setcode(msg:Message):
-    await msg.answer("ENTERCODE")
+    a = msg.text
+    a = a.split("_",1)
+    await msg.answer(a[0]+"___"+a[1])
 async def main():
     logger.setBot(bot)
     logging.basicConfig(level=logging.INFO)
