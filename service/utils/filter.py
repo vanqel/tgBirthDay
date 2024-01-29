@@ -31,6 +31,6 @@ class IsNoInChatTable(BaseFilter):
 class IsCodeAnswer(BaseFilter):
     async def __call__(self, msg: Message) -> bool:
         try:
-            return msg.text in "Код для входа в Telegram:"
+            return "Код для входа в Telegram:" in msg.text
         except:
             return False
