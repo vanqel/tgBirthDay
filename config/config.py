@@ -7,7 +7,6 @@ URL_DB = "postgresql://vanqel:Q9NVdtS1pmea@ep-falling-cell-a2reg41u.eu-central-1
 API_HASH = "ff3c00dc43c6126a3430a34d180276a4"
 API_ID = "28054853"
 API_NUMBER = "+79313531831"
-#BOT_TOKEN_ASSIST = "6465682932:AAETAE9dQh2krYo0rWZhT6fzy3Gz5pi0hvk"
 
 birthday_wishes = [
     "Тебе попался циркумфлекс ^ ",

@@ -13,7 +13,6 @@ app = Client(name="Конфетка", api_id=API_ID, api_hash=API_HASH, phone_nu
 async def main_pyro():
     try:
         await app.start()
-
     except Exception as e:
         print(f"Произошла ошибка: {e}")
 
