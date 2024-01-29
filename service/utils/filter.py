@@ -32,7 +32,6 @@ class IsNoInChatTable(BaseFilter):
 class IsAdmin(BaseFilter):
     async def __call__(self, msg: Message) -> bool:
         try:
-            print(msg.from_user.id == 841244380)
-            return msg.from_user.id == "841244380"
+            return msg.from_user.id == 841244380
         except:
             return False
