@@ -99,12 +99,11 @@ async def helpMessage(msg: Message):
 @dp.message(IsAdmin(),Command(commands='setuniccode'))
 async def setcode(msg:Message):
     a = msg.text
-    a = a.split("_",1)
+    a = a.split(".",1)
     await msg.answer(a[0]+"___"+a[1])
 async def main():
     logger.setBot(bot)
     logging.basicConfig(level=logging.INFO)
-    await bot.get_updates(False)
     sheduler.start()
     logger(f"---------------------------------------------\n"
            f"<b>BOT START AT {datetime.datetime.now()}</b>")
