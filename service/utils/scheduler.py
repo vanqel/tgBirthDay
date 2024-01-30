@@ -8,7 +8,7 @@ from apscheduler.schedulers.asyncio import AsyncIOScheduler
 
 from config import birthday_wishes
 from database.database import database_manager
-from .pyro import createGroup, deleteGroup_chat_id
+from .pyro import createGroup, deleteGroup_chat_id, deleteGroup_target
 from .utils import logger, get_photo_user
 
 sheduler = AsyncIOScheduler(timezone='Europe/Moscow', executor="asyncio")
@@ -186,7 +186,7 @@ async def sendDayInChat(bot: Bot, target_user):
 
 
 #async def test(bot: Bot):
-#    chat_id = -4146508283
+#    chat_id = -4077537012
 #    target_user = 841244380
 #    date = database_manager.get_target_birthdays(target=target_user)
 #    caption_now = "Сегодня {} празднует день рождение!"
@@ -204,4 +204,4 @@ async def sendDayInChat(bot: Bot, target_user):
 #                     name=str(target_user) + "." + str(chat_id), args=[bot, target_user])
 #    sheduler.add_job(deleteGroup_target, trigger='date',
 #                     next_run_time=datetime.datetime.now() + datetime.timedelta(seconds=60), args=[target_user])
-#
+
